@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         area:hover {
             cursor: pointer;
@@ -13,18 +13,46 @@
 </head>
 <body>
     <map name="puntos">
-        <area shape="rect" coords="1055,239,1208,389" onclick="alert('texto para descripción')">
-        <area shape="rect" coords="879,352,1005,484" onclick="alert('texto para descripción')">
-        <area shape="rect" coords="547,539,673,689" onclick="alert('texto para descripción')">
-        <area shape="circle" coords="940,216,61" onclick="alert('texto para descripción')">
-        <area shape="circle" coords="369,305,82" onclick="alert('texto para descripción')">
-        <area shape="circle" coords="1090,614,76" onclick="alert('texto para descripción')">
-        <area shape="poly" coords="688,229,688,381,702,381,702,395,811,395,811,244,796,244,796,229" onclick="alert('texto para descripción')">
-        <area shape="poly" coords="507,183,537,159,559,159,604,164,604,276,600,280,512,281,507,275,507,183" onclick="alert('texto para descripción')">
-        <area shape="poly" coords="499,393,534,393,534,363,576,363,576,377,613,377,613,473,499,473" onclick="alert('texto para descripción')">
+        <area shape="rect" coords="1055,239,1208,389" onclick="showDescription(`
+        Nuestra primera proyección está dirigida a pequeños agricultores de plátano en fincas de producción a baja escala, que no requieran de una capacidad de almacenamiento a gran escala en Armenia, Quindío.`)">
+        <area shape="rect" coords="879,352,1005,484" onclick="showDescription('Una aplicación intuitiva y fácil de usar para gestionar el inventario de plátanos, que ayuda a los agricultores a realizar un seguimiento eficiente de su producción y a tomar decisiones informadas, con el añadido de poder ser utilizada mediante una red local de facil instalacion.')">
+        <area shape="rect" coords="547,539,673,689" onclick="showDescription('texto para descripción 3')">
+        <area shape="circle" coords="940,216,61" onclick="showDescription('texto para descripción 4')">
+        <area shape="circle" coords="369,305,82" onclick="showDescription('texto para descripción 5')">
+        <area shape="circle" coords="1090,614,76" onclick="showDescription('texto para descripción 6')">
+        <area shape="poly" coords="688,229,688,381,702,381,702,395,811,395,811,244,796,244,796,229" onclick="showDescription('texto para descripción 7')">
+        <area shape="poly" coords="507,183,537,159,559,159,604,164,604,276,600,280,512,281,507,275,507,183" onclick="showDescription('texto para descripción 8')">
+        <area shape="poly" coords="499,393,534,393,534,363,576,363,576,377,613,377,613,473,499,473" onclick="showDescription('texto para descripción 9')">
     </map>
     <div class="canva">
         <img src="canvas.png" usemap="#puntos">
     </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script>
+        function showDescription(text) {
+            document.getElementById('modal-text').innerHTML = text;
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "block";
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
